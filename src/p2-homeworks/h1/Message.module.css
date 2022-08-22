@@ -14,6 +14,14 @@
     margin: 5px;
 }
 
+.angle {
+    width: 15px;
+    height: 15px;
+    margin-right: -10px;
+    background: radial-gradient(circle at 1px 3px, rgba(0, 0, 0, 0) 10px, rgba(0, 34, 0, .9) 0);
+}
+
+
 .content {
     background-color: #002200;
     padding: 15px 20px;
