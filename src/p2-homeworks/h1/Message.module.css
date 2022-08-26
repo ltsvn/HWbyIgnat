@@ -25,7 +25,7 @@
 .content {
     background-color: #002200;
     padding: 15px 20px;
-    border-radius: 5%;
+    border-radius: 5px 5px 5px 0;
     margin-left: 5px;
 }
 
