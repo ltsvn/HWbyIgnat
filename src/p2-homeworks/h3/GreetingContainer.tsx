@@ -23,7 +23,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
         if(name.trim() !== ''){
         addUserCallback(name.trim())
         setName('')} else {
-            setError('You do not add empty line!')
+            setError('You can not add empty task!')
         }
     }
 
