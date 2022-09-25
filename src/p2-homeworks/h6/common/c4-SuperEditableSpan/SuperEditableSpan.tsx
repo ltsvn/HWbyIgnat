@@ -1,5 +1,6 @@
-import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState} from 'react'
+import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState, KeyboardEvent} from 'react'
 import SuperInputText from '../../../h4/common/c1-SuperInputText/SuperInputText'
+import s from './SuperEditableSpan.module.css'
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -10,7 +11,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
     onChangeText?: (value: string) => void
-    onEnter?: () => void
+    onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void
     error?: string
     spanClassName?: string
 
@@ -30,23 +31,23 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
     const [editMode, setEditMode] = useState<boolean>(false)
     const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
 
-    const onEnterCallback = () => {
-        // setEditMode() // выключить editMode при нажатии Enter
+    const onEnterCallback = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') setEditMode(false) // выключить editMode при нажатии Enter
 
-        onEnter && onEnter()
+        onEnter && onEnter(e)
     }
     const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
-        // setEditMode() // выключить editMode при нажатии за пределами инпута
+        setEditMode(false) // выключить editMode при нажатии за пределами инпута
 
         onBlur && onBlur(e)
     }
     const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        // setEditMode() // включить editMode при двойном клике
+        setEditMode(true) // включить editMode при двойном клике
 
         onDoubleClick && onDoubleClick(e)
     }
 
-    const spanClassName = `${'сделать красивый стиль для спана'} ${className}`
+    const spanClassName = `${s.styleInput} ${className}`
 
     return (
         <>

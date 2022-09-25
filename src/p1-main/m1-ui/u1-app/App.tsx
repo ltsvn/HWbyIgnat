@@ -12,10 +12,10 @@ function App() {
         <div className={s.App}>
             <HW5/>
             {/*<div>react homeworks:</div>*/}
-            <HW1/>
-            <HW2/>
-            <HW3/>
-            <HW4/>
+            {/*<HW1/>*/}
+            {/*<HW2/>*/}
+            {/*<HW3/>*/}
+            {/*<HW4/>*/}
 
 
 
