@@ -16,13 +16,13 @@ beforeEach(() => {
 })
 
 test('sort name up', () => {
-    const newState = homeWorkReducer(initialState, {type: 'sort', payload: 'up'})
+    const newState = homeWorkReducer(initialState, {type: 'sortUp', payload: 'up'})
 
     console.log(newState)
      expect(initialState[0].name[0]).toBe('К')
 })
 test('sort name down', () => {
-    const newState = homeWorkReducer(initialState, {type: 'sort', payload: 'down'})
+    const newState = homeWorkReducer(initialState, {type: 'sortDown', payload: 'down'})
     expect(initialState[0].name).toBe('Кот')
 
 })
